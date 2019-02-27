@@ -1,0 +1,82 @@
+#!/bin/bash
+#
+# Configure script
+#
+
+vars=( prefix bindir mandir )
+
+# Default value for prefix dir
+prefix=/usr
+
+usage() {
+    cat >&2 <<EOH
+    Usage: 
+        
+        $0 [--prefix=<prefix>] [--bindir=<bindir>] [--mandir=<mandir>] path/to/executable
+
+    Options:
+
+        --help, -h Display this help and exit
+        --prefix   The prefix dir (defaults to $prefix)
+        --bindir   The binary install dir (defaults to \$PREFIX/bin)
+        --mandir   The manual install dir (defaults to \$PREFIX/share/man)
+EOH
+}
+
+while [ $# -gt 0 ]
+do
+    case $1 in
+        --help|-h|--usage)
+            usage
+            exit 0
+            ;;
+        --prefix)
+            prefix=$2
+            shift 2
+            ;;
+        --bindir)
+            bindir=$2;
+            shift 2
+            ;;
+        --mandir)
+            mandir=$2;
+            shift 2
+            ;;
+        --*)
+            printf '\nUnrecognized option "%s"\n' $1
+            shift
+            ;;
+        *)
+            binpgm=$1
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$binpgm" ]
+then
+    usage
+    exit 1
+fi
+
+[ -z "$bindir" ] && bindir=${prefix}/bin
+[ -z "$mandir" ] && mandir=${prefix}/share/man
+
+printf "\n\033[01;32mConfigured variables:\033[00m\n---------------------\n"
+for v in ${vars[@]}
+do
+    printf "%s: %s\n" $v ${!v}
+done
+
+# Build Makefile upon variables using heredoc
+cat > Makefile <<EOT
+# vim: set noexpandtab
+all:
+	./generate-doc
+
+install:
+	./install-doc
+	cp -v $binpgm $bindir
+EOT
+
+printf "\n\033[01;32mGenerated\033[00m Makefile\n"
