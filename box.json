@@ -1,0 +1,22 @@
+{
+    "chmod": "0755",
+    "banner": "YAML Tools Project\n(c) 2019 Yann Blacher (Yannoff) - MIT License\n@link https://github.com/yannoff/yamltools",
+    "directories": [
+        "src"
+    ],
+    "files": [
+        "LICENSE"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": ["Tests"],
+            "in": "vendor"
+        }
+    ],
+    "git-version": "package_version",
+    "main": "bin/application.php",
+    "output": "bin/yamltools.phar",
+    "stub": true
+}
+

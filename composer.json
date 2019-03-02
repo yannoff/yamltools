@@ -1,0 +1,22 @@
+{
+    "name": "yannoff/yamltools",
+    "description": "Utility to juggle with JSON/YAML",
+    "type": "console-script",
+    "require": {
+        "ext-json": "*",
+        "symfony/yaml": "^3.4",
+        "symfony/console": "^3.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yannoff\\YamlTools\\": "src"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yannoff",
+            "homepage": "https://github.com/yannoff"
+        }
+    ]
+}
