@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# Wrapper script for yamltools' YAML to JSON converter
+#
+# @project yamltools
+# @author  yannoff
+# @license MIT
+# @link    https://github.com/yannoff/yamltools
+#
+yamltools convert:yaml:json "$@"

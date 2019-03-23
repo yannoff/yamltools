@@ -1,6 +1,6 @@
 # yannoff/yamltools
 
-A command-line utility to juggle easily with `JSON` & `YAML`, written in PHP.
+The YAML Tools Project: A command-line toolbox for `YAML`, written in PHP.
 
 ## Requirements
 
@@ -21,7 +21,7 @@ A command-line utility to juggle easily with `JSON` & `YAML`, written in PHP.
 
 ## Usage
 
-### Converting YAML TO JSON
+### Converting YAML to JSON
 
 ```bash
 $ yamltools convert:yaml:json <file.yaml> [<file.json>]
@@ -32,7 +32,7 @@ $ yamltools convert:yaml:json <file.yaml> [<file.json>]
 - `file.yaml` The YAML file to read from
 - `file.json` The (optional) JSON file to write output to. If no file specified, write to standard output. 
 
-### Converting JSON TO YAML
+### Converting JSON to YAML
 
 ```bash
 $ yamltools convert:json:yaml <file.json> [<file.yaml>]

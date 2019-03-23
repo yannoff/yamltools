@@ -5,7 +5,6 @@ MANPAGES_DIR=man
 MANPAGES_SECTION=1
 MD_CONVERTER_BIN=go-md2man
 
-MANPAGE_NAME=$(basename $(dirname `realpath $0`))
 
 _printf(){
     printf "${@}" >&2
@@ -21,9 +20,10 @@ then
 fi
 
 _printf "Iterating over %s/ directory to find markdown files...\n" $MARKDOWN_DIR
-for f in $MARKDOWN_DIR/*.md
+for f in $(find $MARKDOWN_DIR -type f | awk '/\.md/')
 do 
     MANPAGES_SECTION=`basename $f .md`
+    MANPAGE_NAME=$(basename $(dirname `realpath $f`))
     OUTPUT_DIR="$MANPAGES_DIR/man${MANPAGES_SECTION}"
     if [ ! -d "${OUTPUT_DIR}" ]
     then

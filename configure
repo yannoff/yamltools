@@ -4,22 +4,26 @@
 #
 
 vars=( prefix bindir mandir )
+binaries=()
 
 # Default value for prefix dir
 prefix=/usr
 
 usage() {
     cat >&2 <<EOH
-    Usage: 
-        
-        $0 [--prefix=<prefix>] [--bindir=<bindir>] [--mandir=<mandir>] path/to/executable
 
-    Options:
+[01mUsage:[00m 
+    $0 [--prefix=<prefix>] [--bindir=<bindir>] [--mandir=<mandir>] executable1 [[executable2] ... [executableN]]
 
-        --help, -h Display this help and exit
-        --prefix   The prefix dir (defaults to $prefix)
-        --bindir   The binary install dir (defaults to \$PREFIX/bin)
-        --mandir   The manual install dir (defaults to \$PREFIX/share/man)
+[01mArguments:[00m
+    executable1...executableN  Source path(s) of the executable files to be distributed
+
+[01mOptions:[00m
+    --help, -h Display this help and exit
+    --prefix   The prefix dir (defaults to $prefix)
+    --bindir   The binary install dir (defaults to \$PREFIX/bin)
+    --mandir   The manual install dir (defaults to \$PREFIX/share/man)
+
 EOH
 }
 
@@ -47,13 +51,13 @@ do
             shift
             ;;
         *)
-            binpgm=$1
+            binaries+=( $1 )
             shift
             ;;
     esac
 done
 
-if [ -z "$binpgm" ]
+if [ "${#binaries[@]}" -eq "0" ]
 then
     usage
     exit 1
@@ -76,7 +80,13 @@ all:
 
 install:
 	./install-doc
-	cp -v $binpgm $bindir
 EOT
+
+for bin in "${binaries[@]}"
+do
+cat >> Makefile <<EOT
+	cp -v ${bin} ${bindir}
+EOT
+done
 
 printf "\n\033[01;32mGenerated\033[00m Makefile\n"

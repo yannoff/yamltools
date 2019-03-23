@@ -7,7 +7,6 @@
 
 namespace Yannoff\YamlTools\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -19,7 +18,7 @@ use Symfony\Component\Console\Output\OutputInterface;
  * @author  Yannoff
  * @package Yannoff\YamlTools\Command
  */
-abstract class ConverterCommand extends Command
+abstract class ConverterCommand extends BaseCommand
 {
     /** @var string The command global namespace */
     protected $ns;
@@ -27,11 +26,6 @@ abstract class ConverterCommand extends Command
     protected $in;
     /** @var string The converter output format */
     protected $out;
-
-    /** @var InputInterface */
-    protected $input;
-    /** @var OutputInterface */
-    protected $output;
 
     /**
      * ConverterCommand constructor.
@@ -42,8 +36,8 @@ abstract class ConverterCommand extends Command
      */
     public function __construct($ns, $in, $out)
     {
-        $this->in = $ns;
-        $this->in = $in;
+        $this->ns  = $ns;
+        $this->in  = $in;
         $this->out = $out;
 
         $name = sprintf('%s:%s:%s', $ns, $in, $out);
@@ -56,10 +50,13 @@ abstract class ConverterCommand extends Command
      */
     public function configure()
     {
-        $inputFormat = mb_convert_case($this->in, MB_CASE_UPPER);
-        $outputFormat =mb_convert_case($this->out, MB_CASE_UPPER);
+        $inputFormat  = mb_convert_case($this->in, MB_CASE_UPPER);
+        $outputFormat = mb_convert_case($this->out, MB_CASE_UPPER);
+        $helpText     = sprintf('Convert a %s file to %s format', $inputFormat, $outputFormat);
 
         $this
+            ->setHelp($helpText)
+            ->setDescription($helpText)
             ->addArgument(
                 'infile',
                 InputArgument::REQUIRED,
@@ -68,8 +65,8 @@ abstract class ConverterCommand extends Command
             ->addArgument('outfile',
                 InputArgument::OPTIONAL,
                 sprintf('Output file (%s). If none provided, use standard output', $outputFormat)
-            )
-            ;
+            );
+
     }
 
     /**
@@ -79,48 +76,34 @@ abstract class ConverterCommand extends Command
     {
         $this->setIO($input, $output);
 
-        $infile = $input->getArgument('infile');
-        $outfile = $input->getArgument('outfile');
+        try {
+            $infile = $input->getArgument('infile');
+            $outfile = $input->getArgument('outfile');
 
-        $contents = file_get_contents($infile);
 
-        $data = $this->load($contents);
+            $contents = file_get_contents($infile);
 
-        $out = $this->dump($data);
+            $data = $this->load($contents);
 
-        // In case the dump() result is 'null', don't write to file
-        if ('null' == $out) {
-            echo '(null)';
-            $this->debug("No content generated, so file $outfile wasn't written.");
-            exit(0);
+            $out = $this->dump($data);
+
+            // In case the dump() result is 'null', don't write to file
+            if ('null' == $out) {
+                echo '(null)';
+                $this->debug("No content generated, so file $outfile wasn't written.");
+                exit(0);
+            }
+
+            if ($outfile) {
+                file_put_contents($outfile, $out);
+                $this->debug("Written file $outfile.");
+                exit(0);
+            }
+
+            echo $out;
+        } catch (\Exception $e) {
+            $output->writeln($e->getMessage());
         }
-
-        if ($outfile) {
-            file_put_contents($outfile, $out);
-            $this->debug("Written file $outfile.");
-            exit(0);
-        }
-
-        echo $out;
-    }
-
-    /**
-     * @param InputInterface  $input
-     * @param OutputInterface $output
-     */
-    protected function setIO(InputInterface $input, OutputInterface $output)
-    {
-        $this->input = $input;
-        $this->output = $output;
-    }
-
-    /**
-     * @param $message
-     */
-    protected function debug($message)
-    {
-        $message = sprintf("%s: %s", $this->getApplication()->getName(), $message);
-        $this->output->writeln($message, OutputInterface::VERBOSITY_VERBOSE);
     }
 
     /**

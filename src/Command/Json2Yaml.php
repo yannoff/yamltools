@@ -10,19 +10,24 @@ namespace Yannoff\YamlTools\Command;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Class Yaml2JsonCommand
+ * Class Json2Yaml
  *
  * @author  Yannoff
  * @package Yannoff\YamlTools\Command
  */
-class Yaml2JsonCommand extends ConverterCommand
+class Json2Yaml extends ConverterCommand
 {
+    /** @var int */
+    const YAML_INDENT = 4;
+    /** @var int */
+    const YAML_EXPAND_MAXLEVEL = 6;
+
     /**
      * {@inheritdoc}
      */
-    protected function load($yaml)
+    protected function load($json)
     {
-        return Yaml::parse($yaml, Yaml::PARSE_OBJECT_FOR_MAP);
+        return json_decode($json, false);
     }
 
     /**
@@ -30,6 +35,6 @@ class Yaml2JsonCommand extends ConverterCommand
      */
     protected function dump($object)
     {
-        return json_encode($object, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        return Yaml::dump($object, self::YAML_EXPAND_MAXLEVEL, self::YAML_INDENT, Yaml::DUMP_OBJECT_AS_MAP);
     }
 }

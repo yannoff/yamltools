@@ -9,14 +9,14 @@
 require __DIR__ . '/../vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
-use Yannoff\YamlTools\Command\Json2YamlCommand;
-use Yannoff\YamlTools\Command\Yaml2JsonCommand;
+use Yannoff\YamlTools\Command\Json2Yaml;
+use Yannoff\YamlTools\Command\Yaml2Json;
 
 $application = new Application('yamltools', '@package_version@');
 
 $application->addCommands([
-    new Json2YamlCommand('convert', 'json', 'yaml'),
-    new Yaml2JsonCommand('convert', 'yaml', 'json'),
+    new Json2Yaml('convert', 'json', 'yaml'),
+    new Yaml2Json('convert', 'yaml', 'json'),
 ]);
 
 $application->run();
