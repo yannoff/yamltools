@@ -24,6 +24,19 @@ The YAML Tools Project: A command-line swiss-knife for `YAML`, written in PHP.
 The YAML Tools Project comes with several utilities to handle YAML from the command-line:
 
 - [Converter](doc/converter.md) : Juggle easily between `JSON` & `YAML` formats
+- [Comments](doc/comments.md) : Manipulate YAML comments: export, import & merge
+
+## Acknowledgement
+
+The YAML Tools Project is based on the well-known [symfony/yaml](https://github.com/symfony/yaml) component,
+which implements its own engine to dump/parse YAML data.
+
+Too reasons motivated the choice:
+
+- The component is a standalone, pure PHP implementation: no need to have the [Yaml PHP extension](http://pecl.php.net/package/yaml) installed, guaranteeing a wider support for many platforms.
+- The dumps are more pretty-print oriented, and more flexible, allowing to customize indentation and inline wrapping level.
+
+The major drawback on the other hand is that the component is [not fully compliant](https://symfony.com/doc/3.4/components/yaml/yaml_format.html#unsupported-yaml-features) with YAML Standards. 
 
 ## Credits
 
