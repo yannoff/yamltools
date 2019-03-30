@@ -6,7 +6,8 @@
     "require": {
         "ext-json": "*",
         "symfony/yaml": "^3.4",
-        "symfony/console": "^3.4"
+        "symfony/console": "^3.4",
+        "yannoff/y-a-m-l": "^1.1"
     },
     "autoload": {
         "psr-4": {
@@ -19,5 +20,8 @@
             "name": "Yannoff",
             "homepage": "https://github.com/yannoff"
         }
-    ]
+    ],
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.4"
+    }
 }

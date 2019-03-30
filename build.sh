@@ -5,6 +5,7 @@ BINDIR=bin/
 
 # Make sure vendor/ dir contents is coherent with composer.json
 composer install
+composer dump-autoload --optimize
 
 # Launch box build command
 $BOXBIN build "$@"

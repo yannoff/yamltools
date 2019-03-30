@@ -1,6 +1,6 @@
-# yannoff/yamltools
+# YAML Tools : Converter 
 
-YAML Tools Converter: A command-line utility to juggle easily with `JSON` & `YAML`.
+A command-line utility to juggle easily with `JSON` & `YAML`.
 
 ## Usage
 
