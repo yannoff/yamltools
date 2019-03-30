@@ -1,6 +1,7 @@
 {
     "name": "yannoff/yamltools",
-    "description": "Utility to juggle with JSON/YAML",
+    "description": "A command-line Swiss-Knife for YAML files",
+    "homepage": "https://github.com/yannoff/yamltools",
     "type": "console-script",
     "require": {
         "ext-json": "*",

@@ -1,6 +1,6 @@
 # yannoff/yamltools
 
-The YAML Tools Project: A command-line toolbox for `YAML`, written in PHP.
+The YAML Tools Project: A command-line swiss-knife for `YAML`, written in PHP.
 
 ## Requirements
 
@@ -21,27 +21,9 @@ The YAML Tools Project: A command-line toolbox for `YAML`, written in PHP.
 
 ## Usage
 
-### Converting YAML to JSON
+The YAML Tools Project comes with several utilities to handle YAML from the command-line:
 
-```bash
-$ yamltools convert:yaml:json <file.yaml> [<file.json>]
-```
-
-**Aguments:**
-
-- `file.yaml` The YAML file to read from
-- `file.json` The (optional) JSON file to write output to. If no file specified, write to standard output. 
-
-### Converting JSON to YAML
-
-```bash
-$ yamltools convert:json:yaml <file.json> [<file.yaml>]
-```
-
-**Aguments:**
-
-- `file.json` The JSON file to read from
-- `file.yaml` The (optional) YAML file to write output to. If no file specified, write to standard output. 
+- [Converter](doc/converter.md) : Juggle easily between `JSON` & `YAML` formats
 
 ## Credits
 
