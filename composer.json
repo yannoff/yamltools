@@ -1,5 +1,5 @@
 {
-    "name": "yannoff/yamltools",
+    "name": "yannoob/yamltools",
     "description": "A command-line Swiss-Knife for YAML files",
     "homepage": "https://github.com/yannoff/yamltools",
     "type": "console-script",
