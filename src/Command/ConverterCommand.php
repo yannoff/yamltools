@@ -60,7 +60,7 @@ abstract class ConverterCommand extends BaseCommand
             ->addArgument(
                 'infile',
                 InputArgument::REQUIRED,
-                sprintf('Input file (%s)', $inputFormat)
+                sprintf('Input file (%s). If `-` provided, use standard input', $inputFormat)
             )
             ->addArgument(
                 'outfile',
@@ -80,8 +80,7 @@ abstract class ConverterCommand extends BaseCommand
             $infile = $input->getArgument('infile');
             $outfile = $input->getArgument('outfile');
 
-
-            $contents = file_get_contents($infile);
+            $contents = $this->getContents($infile);
 
             $data = $this->load($contents);
 

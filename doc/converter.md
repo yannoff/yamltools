@@ -13,6 +13,12 @@ A command-line utility to juggle easily with `JSON` & `YAML`.
 $ yamltools convert:yaml:json <file.yaml> [<file.json>]
 ```
 
+which is equivalent to:
+
+```bash
+$ cat file.yaml | yamltools convert:yaml:json - [<file.json>]
+```
+
 Or using the short-hand wrapper script
 
 ```bash
@@ -21,13 +27,19 @@ $ yaml2json <file.yaml> [<file.json>]
 
 **Arguments:**
 
-- `file.yaml` The YAML file to read from
+- `file.yaml` The YAML file to read from (**-** for standard input).
 - `file.json` The (optional) JSON file to write output to. If no file specified, write to standard output. 
 
 ### Converting JSON to YAML
 
 ```bash
 $ yamltools convert:json:yaml <file.json> [<file.yaml>]
+```
+
+which is equivalent to:
+
+```bash
+$ cat file.json | yamltools convert:json:yaml - [<file.yaml>]
 ```
 
 Or using the short-hand wrapper script:
@@ -38,6 +50,6 @@ $ json2yaml <file.json> [<file.yaml>]
 
 **Arguments:**
 
-- `file.json` The JSON file to read from
+- `file.json` The JSON file to read from (**-** for standard input).
 - `file.yaml` The (optional) YAML file to write output to. If no file specified, write to standard output. 
 

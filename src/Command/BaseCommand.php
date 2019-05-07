@@ -48,4 +48,20 @@ class BaseCommand extends Command
         $message = sprintf("%s: %s", $this->getApplication()->getName(), $message);
         $this->output->writeln($message, OutputInterface::VERBOSITY_VERBOSE);
     }
+
+    /**
+     * Get contents from input file or stdin if file is null or "-"
+     *
+     * @param string|null $filename Relative or absolute path to the input file
+     *
+     * @return false|string
+     */
+    protected function getContents($filename = null)
+    {
+        if (null === $filename || '-' === $filename) {
+            return stream_get_contents(STDIN);
+        }
+
+        return file_get_contents($filename);
+    }
 }
