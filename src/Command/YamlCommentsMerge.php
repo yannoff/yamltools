@@ -56,7 +56,6 @@ class YamlCommentsMerge extends CommentsCommand
                 'Write merged YAML contents to destination file'
             )
         ;
-
     }
 
     /**

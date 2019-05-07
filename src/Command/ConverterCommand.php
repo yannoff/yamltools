@@ -62,11 +62,11 @@ abstract class ConverterCommand extends BaseCommand
                 InputArgument::REQUIRED,
                 sprintf('Input file (%s)', $inputFormat)
             )
-            ->addArgument('outfile',
+            ->addArgument(
+                'outfile',
                 InputArgument::OPTIONAL,
                 sprintf('Output file (%s). If none provided, use standard output', $outputFormat)
             );
-
     }
 
     /**

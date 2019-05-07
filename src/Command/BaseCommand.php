@@ -22,21 +22,26 @@ class BaseCommand extends Command
 {
     /** @var InputInterface */
     protected $input;
+
     /** @var OutputInterface */
     protected $output;
 
     /**
+     * Setter for input/output class properties
+     *
      * @param InputInterface  $input
      * @param OutputInterface $output
      */
     protected function setIO(InputInterface $input, OutputInterface $output)
     {
-        $this->input = $input;
+        $this->input  = $input;
         $this->output = $output;
     }
 
     /**
-     * @param $message
+     * Print message on standard output, prefixed by the application name
+     *
+     * @param string $message
      */
     protected function debug($message)
     {
