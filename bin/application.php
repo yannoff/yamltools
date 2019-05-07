@@ -15,7 +15,7 @@ use Yannoff\YamlTools\Command\YamlCommentsMerge;
 use Yannoff\YamlTools\Command\YamlCommentsExport;
 use Yannoff\YamlTools\Command\YamlCommentsImport;
 
-$application = new Application('yamltools', '1.1.0');
+$application = new Application('yamltools', '@@version@@');
 
 $application->addCommands([
     new Json2Yaml('convert', 'json', 'yaml'),

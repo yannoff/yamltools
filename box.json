@@ -15,7 +15,7 @@
         }
     ],
     "git-version": "package_version",
-    "main": "bin/application.php",
+    "main": "bin/app.php",
     "output": "bin/yamltools.phar",
     "stub": true
 }
