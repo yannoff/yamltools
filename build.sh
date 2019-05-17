@@ -3,19 +3,32 @@
 BOXBIN=`dirname $0`/box
 BINDIR=bin/
 
+oldversion=`${BINDIR}/yamltools --version | awk '{ print $2; }'`
+printf "Current version: \033[01m%s\033[00m\n" ${oldversion}
+
+# Version number is required to run a build
 if [ -z "$1" ]
 then
-    printf "Usage: $0 <version>\nPrevious tags:\n"
-    #git tag -l
+    printf "Version number is required. Exiting\n"
     exit 1
 fi
+
 version=$1
 shift 1
 
-echo "Version: ${version}"
+# The new build version must be different from the current one
+if [ "${oldversion}" = "${version}" ]
+then
+    printf "Cannot use the same version number for 2 different builds. Exiting\n"
+    exit 1
+fi
 
-# Make sure vendor/ dir contents is coherent with composer.json
-composer install
+
+printf "Building version: \033[01m%s\033[00m\n" ${version}
+
+# Make sure vendor dir is up to date with composer.json, and remove
+# dev dependencies to be sure they won't be included in the PHAR
+composer install --no-dev
 composer dump-autoload --optimize
 
 # Create temporary distributable application file
@@ -34,3 +47,7 @@ cd $BINDIR
 mv -v yamltools.phar yamltools
 md5sum yamltools | awk '{ print $1; }' > yamltools.md5
 sha384sum yamltools | awk '{ print $1; }' > yamltools.sha384
+cd -
+
+# Restore dev dependencies into the project
+composer install

@@ -10,10 +10,14 @@
     "finder": [
         {
             "name": "*.php",
-            "exclude": ["Tests"],
+            "exclude": [
+                "Tests",
+                "squizlabs"
+            ],
             "in": "vendor"
         }
     ],
+    "compression": "GZ",
     "git-version": "package_version",
     "main": "bin/app.php",
     "output": "bin/yamltools.phar",
