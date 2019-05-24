@@ -66,8 +66,8 @@ class YamlCommentsMerge extends CommentsCommand
         $this->setIO($input, $output);
 
         try {
-            $infile = $input->getArgument('original');
-            $outfile = $input->getArgument('filtered');
+            $infile = $this->getArgument('original');
+            $outfile = $this->getArgument('filtered');
 
             $inContents = new Contents($infile);
             $comments = $inContents->collectComments();
@@ -77,15 +77,15 @@ class YamlCommentsMerge extends CommentsCommand
 
             $outStream = (string) $outContents;
 
-            if (null == $input->getOption('write')) {
-                $output->writeln($outStream);
+            if (null == $this->getOption('write')) {
+                $this->writeln($outStream);
                 exit(0);
             }
 
             file_put_contents($outfile, $outStream);
 
         } catch (\Exception $e) {
-            $output->writeln($e->getMessage());
+            $this->writeln($e->getMessage());
         }
     }
 }

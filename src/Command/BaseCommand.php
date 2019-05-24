@@ -64,4 +64,39 @@ class BaseCommand extends Command
 
         return file_get_contents($filename);
     }
+
+    /**
+     * Proxy to InputInterface::getArgument() method
+     *
+     * @param string $name The argument name
+     *
+     * @return mixed
+     */
+    protected function getArgument($name)
+    {
+        return $this->input->getArgument($name);
+    }
+
+    /**
+     * Proxy to InputInterface::getOption() method
+     *
+     * @param string $name The option name
+     *
+     * @return mixed
+     */
+    protected function getOption($name)
+    {
+        return $this->input->getOption($name);
+    }
+
+    /**
+     * Proxy to OutputInterface::writeln() method.
+     *
+     * @param string|array $messages The message as an array of strings or a single string
+     * @param int          $options  A bitmask of options (one of the OUTPUT or VERBOSITY constants)
+     */
+    protected function writeln($messages, $options = 0)
+    {
+        $this->output->writeln($messages, $options);
+    }
 }

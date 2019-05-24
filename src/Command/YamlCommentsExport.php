@@ -59,8 +59,8 @@ class YamlCommentsExport extends CommentsCommand
 
         try {
 
-            $infile = $input->getArgument('original');
-            $outfile = $input->getArgument('output');
+            $infile = $this->getArgument('original');
+            $outfile = $this->getArgument('output');
 
             $analyzer = new Contents($infile);
 
@@ -69,14 +69,14 @@ class YamlCommentsExport extends CommentsCommand
             $yaml = Yaml::dump($comments, 6, 4, Yaml::DUMP_OBJECT | Yaml::DUMP_MULTI_LINE_LITERAL_BLOCK);
 
             if (null == $outfile || '-' === $outfile) {
-                $output->writeln($yaml);
+                $this->writeln($yaml);
                 exit(0);
             }
 
             file_put_contents($outfile, $yaml);
 
         } catch (\Exception $e) {
-            $output->writeln($e->getMessage());
+            $this->writeln($e->getMessage());
             exit(1);
         }
     }

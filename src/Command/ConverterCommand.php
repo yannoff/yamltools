@@ -77,8 +77,8 @@ abstract class ConverterCommand extends BaseCommand
         $this->setIO($input, $output);
 
         try {
-            $infile = $input->getArgument('infile');
-            $outfile = $input->getArgument('outfile');
+            $infile = $this->getArgument('infile');
+            $outfile = $this->getArgument('outfile');
 
             $contents = $this->getContents($infile);
 
@@ -101,7 +101,7 @@ abstract class ConverterCommand extends BaseCommand
 
             echo $out;
         } catch (\Exception $e) {
-            $output->writeln($e->getMessage());
+            $this->writeln($e->getMessage());
         }
     }
 

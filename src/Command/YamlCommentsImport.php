@@ -66,21 +66,21 @@ class YamlCommentsImport extends CommentsCommand
 
         try {
 
-            $infile = $input->getArgument('input');
-            $outfile = $input->getArgument('destination');
+            $infile = $this->getArgument('input');
+            $outfile = $this->getArgument('destination');
 
             $comments = Yaml::parseFile($infile, Yaml::PARSE_OBJECT | Yaml::PARSE_CUSTOM_TAGS);
 
             $outStream = (new Contents($outfile))->injectComments($comments);
 
-            if (null == $input->getOption('write')) {
-                $output->writeln((string) $outStream);
+            if (null == $this->getOption('write')) {
+                $this->writeln((string) $outStream);
                 exit(0);
             }
 
             file_put_contents($outfile, $outStream);
         } catch (\Exception $e) {
-            $output->writeln($e->getMessage());
+            $this->writeln($e->getMessage());
             exit(1);
         }
     }
