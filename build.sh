@@ -3,7 +3,7 @@
 BOXBIN=`dirname $0`/box
 BINDIR=bin/
 
-oldversion=`${BINDIR}/yamltools --version | awk '{ print $2; }'`
+oldversion=`${BINDIR}/yamltools --version --raw`
 printf "Current version: \033[01m%s\033[00m\n" ${oldversion}
 
 # Version number is required to run a build
@@ -28,6 +28,7 @@ printf "Building version: \033[01m%s\033[00m\n" ${version}
 
 # Make sure vendor dir is up to date with composer.json, and remove
 # dev dependencies to be sure they won't be included in the PHAR
+rm -rf vendor/*
 composer install --no-dev
 composer dump-autoload --optimize
 
