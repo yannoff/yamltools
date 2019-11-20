@@ -50,8 +50,8 @@ abstract class ConverterCommand extends BaseCommand
      */
     public function configure()
     {
-        $inputFormat  = mb_convert_case($this->in, MB_CASE_UPPER);
-        $outputFormat = mb_convert_case($this->out, MB_CASE_UPPER);
+        $inputFormat  = strtoupper($this->in);
+        $outputFormat = strtoupper($this->out);
         $helpText     = sprintf('Convert a %s file to %s format', $inputFormat, $outputFormat);
 
         $this
