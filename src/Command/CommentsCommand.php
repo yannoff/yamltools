@@ -16,7 +16,7 @@ use Yannoff\Component\YAML\Contents;
  * @author  Yannoff
  * @package Yannoff\YamlTools\Command
  */
-class CommentsCommand extends BaseCommand
+abstract class CommentsCommand extends BaseCommand
 {
     /**
      * @param Contents $analyzer

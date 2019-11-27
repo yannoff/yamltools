@@ -8,7 +8,7 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use Symfony\Component\Console\Application;
+use Yannoff\Component\Console\Application;
 use Yannoff\YamlTools\Command\Json2Yaml;
 use Yannoff\YamlTools\Command\Yaml2Json;
 use Yannoff\YamlTools\Command\YamlCommentsMerge;

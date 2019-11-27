@@ -7,11 +7,9 @@
 
 namespace Yannoff\YamlTools\Command;
 
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Yaml;
+use Yannoff\Component\Console\Definition\Argument;
+use Yannoff\Component\Console\Definition\Option;
 use Yannoff\Component\YAML\Contents;
 
 /**
@@ -40,18 +38,18 @@ class YamlCommentsImport extends CommentsCommand
             ->setDescription($help)
             ->addArgument(
                 'input',
-                InputArgument::REQUIRED,
+                Argument::REQUIRED,
                 'File where comments are stored'
             )
             ->addArgument(
                 'destination',
-                InputArgument::REQUIRED,
+                Argument::REQUIRED,
                 'Destination file comments will be incorporated to'
             )
             ->addOption(
                 'write',
                 'w',
-                InputOption::VALUE_NONE,
+                Option::FLAG,
                 'Write merged YAML contents to destination file'
             )
         ;
@@ -60,10 +58,8 @@ class YamlCommentsImport extends CommentsCommand
     /**
      * {@inheritdoc}
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute()
     {
-        $this->setIO($input, $output);
-
         try {
 
             $infile = $this->getArgument('input');
@@ -75,13 +71,18 @@ class YamlCommentsImport extends CommentsCommand
 
             if (null == $this->getOption('write')) {
                 $this->writeln((string) $outStream);
-                exit(0);
+                return 0;
             }
 
             file_put_contents($outfile, $outStream);
+
         } catch (\Exception $e) {
-            $this->writeln($e->getMessage());
-            exit(1);
+
+            $this->errorln($e->getMessage());
+            return 1;
+
         }
+
+        return 0;
     }
 }

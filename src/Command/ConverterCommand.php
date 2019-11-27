@@ -7,9 +7,7 @@
 
 namespace Yannoff\YamlTools\Command;
 
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
+use Yannoff\Component\Console\Definition\Argument;
 
 /**
  * Class ConverterCommand
@@ -59,12 +57,12 @@ abstract class ConverterCommand extends BaseCommand
             ->setDescription($helpText)
             ->addArgument(
                 'infile',
-                InputArgument::REQUIRED,
+                Argument::REQUIRED,
                 sprintf('Input file (%s). If `-` provided, use standard input', $inputFormat)
             )
             ->addArgument(
                 'outfile',
-                InputArgument::OPTIONAL,
+                Argument::OPTIONAL,
                 sprintf('Output file (%s). If none provided, use standard output', $outputFormat)
             );
     }
@@ -72,11 +70,10 @@ abstract class ConverterCommand extends BaseCommand
     /**
      * {@inheritdoc}
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute()
     {
-        $this->setIO($input, $output);
-
         try {
+
             $infile = $this->getArgument('infile');
             $outfile = $this->getArgument('outfile');
 
@@ -90,19 +87,25 @@ abstract class ConverterCommand extends BaseCommand
             if ('null' == $out) {
                 echo '(null)';
                 $this->debug("No content generated, so file $outfile wasn't written.");
-                exit(0);
+                return 0;
             }
 
             if ($outfile) {
                 file_put_contents($outfile, $out);
-                $this->debug("Written file $outfile.");
-                exit(0);
+                $this->errorln("Written file $outfile.");
+                return 0;
             }
 
-            echo $out;
+            $this->iowrite($out);
+
         } catch (\Exception $e) {
-            $this->writeln($e->getMessage());
+
+            $this->errorln($e->getMessage());
+            return 1;
+
         }
+
+        return 0;
     }
 
     /**

@@ -7,10 +7,8 @@
 
 namespace Yannoff\YamlTools\Command;
 
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
+use Yannoff\Component\Console\Definition\Argument;
+use Yannoff\Component\Console\Definition\Option;
 use Yannoff\Component\YAML\Contents;
 
 /**
@@ -41,18 +39,18 @@ class YamlCommentsMerge extends CommentsCommand
             ->setDescription($help)
             ->addArgument(
                 'original',
-                InputArgument::REQUIRED,
+                Argument::REQUIRED,
                 'Original YAML file with comments'
             )
             ->addArgument(
                 'filtered',
-                InputArgument::REQUIRED,
+                Argument::REQUIRED,
                 'Destination file (containing YAML without comments)'
             )
             ->addOption(
                 'write',
                 'w',
-                InputOption::VALUE_NONE,
+                Option::FLAG,
                 'Write merged YAML contents to destination file'
             )
         ;
@@ -61,11 +59,10 @@ class YamlCommentsMerge extends CommentsCommand
     /**
      * {@inheritdoc}
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute()
     {
-        $this->setIO($input, $output);
-
         try {
+
             $infile = $this->getArgument('original');
             $outfile = $this->getArgument('filtered');
 
@@ -79,13 +76,18 @@ class YamlCommentsMerge extends CommentsCommand
 
             if (null == $this->getOption('write')) {
                 $this->writeln($outStream);
-                exit(0);
+                return 0;
             }
 
             file_put_contents($outfile, $outStream);
 
         } catch (\Exception $e) {
+
             $this->writeln($e->getMessage());
+            return 1;
+
         }
+
+        return 0;
     }
 }

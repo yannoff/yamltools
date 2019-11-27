@@ -7,10 +7,8 @@
 
 namespace Yannoff\YamlTools\Command;
 
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Yaml;
+use Yannoff\Component\Console\Definition\Argument;
 use Yannoff\Component\YAML\Contents;
 
 /**
@@ -39,12 +37,12 @@ class YamlCommentsExport extends CommentsCommand
             ->setDescription($help)
             ->addArgument(
                 'original',
-                InputArgument::REQUIRED,
+                Argument::REQUIRED,
                 'Original YAML file with comments'
             )
             ->addArgument(
                 'output',
-                InputArgument::OPTIONAL,
+                Argument::OPTIONAL,
                 'Destination file comments will be exported to. If none provided, use standard output'
             )
         ;
@@ -53,10 +51,8 @@ class YamlCommentsExport extends CommentsCommand
     /**
      * {@inheritdoc}
      */
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute()
     {
-        $this->setIO($input, $output);
-
         try {
 
             $infile = $this->getArgument('original');
@@ -70,14 +66,18 @@ class YamlCommentsExport extends CommentsCommand
 
             if (null == $outfile || '-' === $outfile) {
                 $this->writeln($yaml);
-                exit(0);
+                return 0;
             }
 
             file_put_contents($outfile, $yaml);
 
         } catch (\Exception $e) {
-            $this->writeln($e->getMessage());
-            exit(1);
+
+            $this->errorln($e->getMessage());
+            return 1;
+
         }
+
+        return 0;
     }
 }
