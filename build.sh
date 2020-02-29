@@ -36,7 +36,7 @@ offenbach dump-autoload --optimize
 sed "s/@@version@@/${version}/" ${BINDIR}/application.php > ${BINDIR}/app.php
 
 # Launch box build command
-$BOXBIN build "$@"
+php -d phar.readonly=0 $BOXBIN build "$@"
 
 # Remove temporary distributable application file
 rm ${BINDIR}/app.php
