@@ -1,0 +1,19 @@
+name: yannoff/yamltools
+description: 'A command-line Swiss-Knife for YAML files'
+homepage: 'https://github.com/yannoff/yamltools'
+type: console-script
+require:
+    ext-json: '*'
+    symfony/yaml: ^3.4
+    yannoff/y-a-m-l: ^1.1
+    yannoff/console: ^1.2
+autoload:
+    psr-4:
+        Yannoff\YamlTools\: src
+license: MIT
+authors:
+    -
+        name: Yannoff
+        homepage: 'https://github.com/yannoff'
+require-dev:
+    squizlabs/php_codesniffer: ^3.4

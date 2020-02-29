@@ -26,11 +26,11 @@ fi
 
 printf "Building version: \033[01m%s\033[00m\n" ${version}
 
-# Make sure vendor dir is up to date with composer.json, and remove
+# Make sure vendor dir is up to date with composer-lock, and remove
 # dev dependencies to be sure they won't be included in the PHAR
 rm -rf vendor/*
-composer install --no-dev
-composer dump-autoload --optimize
+offenbach install --no-dev
+offenbach dump-autoload --optimize
 
 # Create temporary distributable application file
 sed "s/@@version@@/${version}/" ${BINDIR}/application.php > ${BINDIR}/app.php
@@ -51,4 +51,4 @@ sha384sum yamltools | awk '{ print $1; }' > yamltools.sha384
 cd -
 
 # Restore dev dependencies into the project
-composer install
+offenbach install
