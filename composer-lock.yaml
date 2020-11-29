@@ -120,15 +120,15 @@ packages:
         time: '2019-11-21T18:39:18+00:00'
     -
         name: yannoff/y-a-m-l
-        version: 1.1.1
+        version: 1.1.2
         source:
             type: git
             url: 'https://github.com/yannoff/y-a-m-l.git'
-            reference: 307ebafc4838e9e123295f26681c6785bd4ffe32
+            reference: 39a87e4a4183ce60202045a6303378f523888ab4
         dist:
             type: zip
-            url: 'https://api.github.com/repos/yannoff/y-a-m-l/zipball/307ebafc4838e9e123295f26681c6785bd4ffe32'
-            reference: 307ebafc4838e9e123295f26681c6785bd4ffe32
+            url: 'https://api.github.com/repos/yannoff/y-a-m-l/zipball/39a87e4a4183ce60202045a6303378f523888ab4'
+            reference: 39a87e4a4183ce60202045a6303378f523888ab4
             shasum: ''
         require:
             ext-json: '*'
@@ -147,7 +147,10 @@ packages:
                 homepage: 'https://github.com/yannoff'
         description: 'Y.A.M.L : Yaml Abstraction Model Layer'
         homepage: 'https://github.com/yannoff/y-a-m-l'
-        time: '2019-03-31T18:47:46+00:00'
+        support:
+            issues: 'https://github.com/yannoff/y-a-m-l/issues'
+            source: 'https://github.com/yannoff/y-a-m-l/tree/1.1.2'
+        time: '2020-11-29T17:57:16+00:00'
 packages-dev:
     -
         name: squizlabs/php_codesniffer
@@ -196,3 +199,4 @@ prefer-lowest: false
 platform:
     ext-json: '*'
 platform-dev: {  }
+plugin-api-version: 2.0.0
