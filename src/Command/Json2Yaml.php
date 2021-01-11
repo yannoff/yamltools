@@ -27,7 +27,7 @@ class Json2Yaml extends ConverterCommand
      */
     protected function load($json)
     {
-        return json_decode($json, false);
+        return json_decode($json, false, JSON_FORCE_OBJECT);
     }
 
     /**
@@ -35,6 +35,6 @@ class Json2Yaml extends ConverterCommand
      */
     protected function dump($object)
     {
-        return Yaml::dump($object, self::YAML_EXPAND_MAXLEVEL, self::YAML_INDENT, Yaml::DUMP_OBJECT_AS_MAP);
+        return Yaml::dump($object, self::YAML_EXPAND_MAXLEVEL, self::YAML_INDENT, Yaml::DUMP_OBJECT_AS_MAP|Yaml::DUMP_EMPTY_ARRAY_AS_SEQUENCE);
     }
 }
