@@ -125,16 +125,16 @@
         },
         {
             "name": "yannoff/console",
-            "version": "1.2.1",
+            "version": "1.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yannoff/console.git",
-                "reference": "df7505c9f4c2f646ec3e517a0d67c77c0a9e6175"
+                "reference": "9dde3d951679be748eb8ca7101685c83a35073d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yannoff/console/zipball/df7505c9f4c2f646ec3e517a0d67c77c0a9e6175",
-                "reference": "df7505c9f4c2f646ec3e517a0d67c77c0a9e6175",
+                "url": "https://api.github.com/repos/yannoff/console/zipball/9dde3d951679be748eb8ca7101685c83a35073d9",
+                "reference": "9dde3d951679be748eb8ca7101685c83a35073d9",
                 "shasum": ""
             },
             "require-dev": {
@@ -158,7 +158,11 @@
             ],
             "description": "A simple, lightweight console implementation for command-line PHP applications.",
             "homepage": "https://github.com/yannoff/console",
-            "time": "2019-11-21T18:39:18+00:00"
+            "support": {
+                "issues": "https://github.com/yannoff/console/issues",
+                "source": "https://github.com/yannoff/console/tree/1.2.3"
+            },
+            "time": "2021-01-10T17:50:37+00:00"
         },
         {
             "name": "yannoff/y-a-m-l",
