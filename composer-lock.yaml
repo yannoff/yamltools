@@ -127,15 +127,15 @@ packages:
         time: '2021-01-10T17:50:37+00:00'
     -
         name: yannoff/y-a-m-l
-        version: 1.1.3
+        version: 1.1.4
         source:
             type: git
             url: 'https://github.com/yannoff/y-a-m-l.git'
-            reference: ab562a458e40cfd936562df7dd2d4d2cd6fb5373
+            reference: 864be87d351797e270b63cbb755bc9f456afe407
         dist:
             type: zip
-            url: 'https://api.github.com/repos/yannoff/y-a-m-l/zipball/ab562a458e40cfd936562df7dd2d4d2cd6fb5373'
-            reference: ab562a458e40cfd936562df7dd2d4d2cd6fb5373
+            url: 'https://api.github.com/repos/yannoff/y-a-m-l/zipball/864be87d351797e270b63cbb755bc9f456afe407'
+            reference: 864be87d351797e270b63cbb755bc9f456afe407
             shasum: ''
         require:
             ext-json: '*'
@@ -156,8 +156,8 @@ packages:
         homepage: 'https://github.com/yannoff/y-a-m-l'
         support:
             issues: 'https://github.com/yannoff/y-a-m-l/issues'
-            source: 'https://github.com/yannoff/y-a-m-l/tree/1.1.3'
-        time: '2021-01-12T19:39:48+00:00'
+            source: 'https://github.com/yannoff/y-a-m-l/tree/1.1.4'
+        time: '2021-01-20T22:00:30+00:00'
 packages-dev:
     -
         name: squizlabs/php_codesniffer
