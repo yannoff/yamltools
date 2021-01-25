@@ -198,12 +198,12 @@ packages-dev:
             - phpcs
             - standards
         time: '2019-03-19T03:22:27+00:00'
-aliases: {  }
+aliases: []
 minimum-stability: stable
-stability-flags: {  }
+stability-flags: []
 prefer-stable: false
 prefer-lowest: false
 platform:
     ext-json: '*'
-platform-dev: {  }
+platform-dev: []
 plugin-api-version: 2.0.0
