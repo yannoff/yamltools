@@ -7,6 +7,7 @@
 
 namespace Yannoff\YamlTools\Command;
 
+use StdClass;
 use Yannoff\Component\Console\Definition\Argument;
 
 /**
@@ -18,12 +19,17 @@ use Yannoff\Component\Console\Definition\Argument;
  */
 abstract class ConverterCommand extends BaseCommand
 {
+    /** @var string The line-ending char */
+    const LF = "\n";
+
     /** @var string The command global namespace */
     protected $ns;
     /** @var string The converter input format */
     protected $in;
     /** @var string The converter output format */
     protected $out;
+    /** @var string Original file-ending char (namely a LF) if appropriate */
+    protected $ending;
 
     /**
      * ConverterCommand constructor.
@@ -79,9 +85,9 @@ abstract class ConverterCommand extends BaseCommand
 
             $contents = $this->getContents($infile);
 
-            $data = $this->load($contents);
+            $data = $this->doLoad($contents);
 
-            $out = $this->dump($data);
+            $out = $this->doDump($data);
 
             // In case the dump() result is 'null', don't write to file
             if ('null' == $out) {
@@ -109,20 +115,51 @@ abstract class ConverterCommand extends BaseCommand
     }
 
     /**
+     * Wrapper method for the load() child method
+     * Detect LF ending in the original contents if present, and stores it
+     *
+     * @param string $contents The YAML or JSON data to be loaded as an object
+     *
+     * @return StdClass An object representation of the loaded data
+     */
+    protected function doLoad($contents)
+    {
+        // Store file-ending blank line, if appropriate
+        if (substr($contents, -1) === self::LF) {
+            $this->ending = self::LF;
+        }
+
+        return $this->load($contents);
+    }
+
+    /**
+     * Wrapper method for the dump() child method
+     * Append original file-ending to the converted contents
+     *
+     * @param StdClass $object Object representation of the data to be dumped
+     *
+     * @return string The JSON or YAML formatted contents
+     */
+    protected function doDump($object)
+    {
+        return $this->dump($object) . $this->ending;
+    }
+
+    /**
      * Convert JSON or YAML contents as an object
      *
      * @param string $contents The YAML or JSON data to be loaded as an object
      *
-     * @return mixed An object representation of the loaded data
+     * @return StdClass An object representation of the loaded data
      */
     abstract protected function load($contents);
 
     /**
      * Dump object to output format
      *
-     * @param mixed $object
+     * @param StdClass $object Object representation of the data to be dumped
      *
-     * @return string
+     * @return string The JSON or YAML formatted contents
      */
     abstract protected function dump($object);
 }
