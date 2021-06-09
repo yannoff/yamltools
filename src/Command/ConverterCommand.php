@@ -90,7 +90,7 @@ abstract class ConverterCommand extends BaseCommand
             $out = $this->doDump($data);
 
             // In case the dump() result is 'null', don't write to file
-            if ('null' == $out) {
+            if ('null' == trim($out)) {
                 echo '(null)';
                 $this->debug("No content generated, so file $outfile wasn't written.");
                 return 0;
