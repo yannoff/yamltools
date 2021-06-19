@@ -21,13 +21,15 @@ class Json2Yaml extends ConverterCommand
     const YAML_INDENT = 4;
     /** @var int */
     const YAML_EXPAND_MAXLEVEL = 6;
+    /** @var int */
+    const JSON_MAX_DEPTH = 512;
 
     /**
      * {@inheritdoc}
      */
     protected function load($json)
     {
-        return json_decode($json, false, JSON_FORCE_OBJECT);
+        return json_decode($json, false, self::JSON_MAX_DEPTH, JSON_FORCE_OBJECT);
     }
 
     /**
