@@ -8,7 +8,8 @@
         "ext-json": "*",
         "symfony/yaml": "^3.4",
         "yannoff/y-a-m-l": "^1.1",
-        "yannoff/console": "^1.2"
+        "yannoff/console": "^1.2",
+        "symfony/polyfill-ctype": "<=1.19.0"
     },
     "autoload": {
         "psr-4": {
