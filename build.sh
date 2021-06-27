@@ -52,3 +52,6 @@ cd -
 
 # Restore dev dependencies into the project
 offenbach install
+
+# Restore the genuine composer files
+git checkout -- composer.json composer.lock
