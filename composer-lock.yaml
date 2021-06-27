@@ -6,7 +6,7 @@ _readme:
     - 'This file locks the dependencies of your project to a known state'
     - 'Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies'
     - 'This file is @generated automatically'
-content-hash: 9bea61c89396e3a1f88cbfc08d8a14af
+content-hash: d506f189cde2bad9e9b8f0731e56517d
 packages:
     -
         name: symfony/polyfill-ctype
@@ -221,6 +221,10 @@ packages-dev:
         keywords:
             - phpcs
             - standards
+        support:
+            issues: 'https://github.com/squizlabs/PHP_CodeSniffer/issues'
+            source: 'https://github.com/squizlabs/PHP_CodeSniffer'
+            wiki: 'https://github.com/squizlabs/PHP_CodeSniffer/wiki'
         time: '2019-03-19T03:22:27+00:00'
 aliases: []
 minimum-stability: stable
@@ -228,6 +232,7 @@ stability-flags: []
 prefer-stable: false
 prefer-lowest: false
 platform:
+    php: '>=5.6.40'
     ext-json: '*'
 platform-dev: []
 plugin-api-version: 2.0.0
