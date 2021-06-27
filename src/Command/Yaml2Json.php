@@ -7,7 +7,8 @@
 
 namespace Yannoff\YamlTools\Command;
 
-use Symfony\Component\Yaml\Yaml;
+use Yannoff\YamlTools\Encoder\Json;
+use Yannoff\YamlTools\Encoder\Yaml;
 
 /**
  * Class Yaml2Json
@@ -22,7 +23,7 @@ class Yaml2Json extends ConverterCommand
      */
     protected function load($yaml)
     {
-        return Yaml::parse($yaml, Yaml::PARSE_OBJECT_FOR_MAP);
+        return Yaml::decode($yaml);
     }
 
     /**
@@ -30,6 +31,6 @@ class Yaml2Json extends ConverterCommand
      */
     protected function dump($object)
     {
-        return json_encode($object, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+        return Json::encode($object);
     }
 }
