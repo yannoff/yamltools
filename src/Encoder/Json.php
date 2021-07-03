@@ -66,7 +66,7 @@ class Json extends Encoder
             throw new JsonException($e->getCode());
         }
 
-        if ($code = \json_last_error() !== JSON_ERROR_NONE) {
+        if (($code = \json_last_error()) !== JSON_ERROR_NONE) {
             throw new JsonException($code);
         }
 
@@ -93,7 +93,7 @@ class Json extends Encoder
             throw new JsonException($e->getCode());
         }
 
-        if ($code = \json_last_error() !== JSON_ERROR_NONE) {
+        if (($code = \json_last_error()) !== JSON_ERROR_NONE) {
             throw new JsonException($code);
         }
 
