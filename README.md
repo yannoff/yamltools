@@ -4,14 +4,20 @@ The YAML Tools Project: A command-line swiss-knife for `YAML`, written in PHP.
 
 ## Requirements
 
-- `php` 5.5.9+ | 7.0.8+
+- `php` 5.6.40+
 - `go-md2man` for advanced configuration (see [Advanced install section](#advanced-install) for details)
 
 
 ## Quick installation
 
-1. Clone or fetch a zipball from this repository
-2. Run `sudo make install`
+Get the latest release and install it
+
+```
+curl -Lo /usr/bin/yamltools https://github.com/yannoff/yamltools/releases/latest/download/yamltools
+chmod +x /usr/bin/yamltools
+```
+
+> _The `/usr/bin/yamltools` path is just an example, fell free to replace by any custom binary file path._
 
 ## Advanced install 
 
@@ -31,7 +37,7 @@ The YAML Tools Project comes with several utilities to handle YAML from the comm
 The YAML Tools Project is based on the well-known [symfony/yaml](https://github.com/symfony/yaml) component,
 which implements its own engine to dump/parse YAML data.
 
-Too reasons motivated the choice:
+Two reasons motivated the choice:
 
 - The component is a standalone, pure PHP implementation: no need to have the [Yaml PHP extension](http://pecl.php.net/package/yaml) installed, guaranteeing a wider support for many platforms.
 - The dumps are more pretty-print oriented, and more flexible, allowing to customize indentation and inline wrapping level.
