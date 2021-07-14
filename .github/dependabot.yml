@@ -6,3 +6,5 @@ updates:
         schedule:
             interval: daily
         versioning-strategy: lockfile-only
+        commit-message:
+            prefix: '[bump]'
