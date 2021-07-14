@@ -1,0 +1,4 @@
+.git*            export-ignore
+/box*            export-ignore
+/build.sh        export-ignore
+/post-dependabot export-ignore
