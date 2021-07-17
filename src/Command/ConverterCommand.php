@@ -28,8 +28,6 @@ abstract class ConverterCommand extends BaseCommand
     protected $in;
     /** @var string The converter output format */
     protected $out;
-    /** @var string Original file-ending char (namely a LF) if appropriate */
-    protected $ending;
 
     /**
      * ConverterCommand constructor.
@@ -115,7 +113,6 @@ abstract class ConverterCommand extends BaseCommand
 
     /**
      * Wrapper method for the load() child method
-     * Detect LF ending in the original contents if present, and stores it
      *
      * @param string $contents The YAML or JSON data to be loaded as an object
      *
@@ -123,17 +120,12 @@ abstract class ConverterCommand extends BaseCommand
      */
     protected function doLoad($contents)
     {
-        // Store file-ending blank line, if appropriate
-        if ($this->hasExtraNewLine($contents)) {
-            $this->ending = self::LF;
-        }
-
         return $this->load($contents);
     }
 
     /**
      * Wrapper method for the dump() child method
-     * Append original file-ending to the converted contents
+     * Append a new line to the converted contents
      *
      * @param StdClass $object Object representation of the data to be dumped
      *
@@ -141,19 +133,7 @@ abstract class ConverterCommand extends BaseCommand
      */
     protected function doDump($object)
     {
-        return rtrim($this->dump($object), self::LF) . $this->ending;
-    }
-
-    /**
-     * Find out if the given contents end contains extra new lines
-     *
-     * @param string $contents
-     *
-     * @return bool
-     */
-    protected function hasExtraNewLine($contents)
-    {
-        return substr($contents, -2) === str_repeat(self::LF, 2);
+        return rtrim($this->dump($object), self::LF) . self::LF;
     }
 
     /**
