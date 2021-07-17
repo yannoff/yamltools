@@ -55,3 +55,6 @@ offenbach install
 
 # Restore the genuine composer files
 git checkout -- composer.json composer.lock
+
+# Run smoke test
+${BINDIR}/yamltools --version
