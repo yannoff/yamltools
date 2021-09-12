@@ -120,15 +120,15 @@ packages:
         time: '2020-10-24T10:57:07+00:00'
     -
         name: yannoff/console
-        version: 1.2.3
+        version: 1.2.4
         source:
             type: git
             url: 'https://github.com/yannoff/console.git'
-            reference: 9dde3d951679be748eb8ca7101685c83a35073d9
+            reference: ab0898858fd20e8d3ae7e17a7b6198b599e2e3c1
         dist:
             type: zip
-            url: 'https://api.github.com/repos/yannoff/console/zipball/9dde3d951679be748eb8ca7101685c83a35073d9'
-            reference: 9dde3d951679be748eb8ca7101685c83a35073d9
+            url: 'https://api.github.com/repos/yannoff/console/zipball/ab0898858fd20e8d3ae7e17a7b6198b599e2e3c1'
+            reference: ab0898858fd20e8d3ae7e17a7b6198b599e2e3c1
             shasum: ''
         require-dev:
             squizlabs/php_codesniffer: ^3.4
@@ -147,8 +147,8 @@ packages:
         homepage: 'https://github.com/yannoff/console'
         support:
             issues: 'https://github.com/yannoff/console/issues'
-            source: 'https://github.com/yannoff/console/tree/1.2.3'
-        time: '2021-01-10T17:50:37+00:00'
+            source: 'https://github.com/yannoff/console/tree/1.2.4'
+        time: '2021-07-14T12:04:44+00:00'
     -
         name: yannoff/y-a-m-l
         version: 1.1.4
@@ -235,4 +235,4 @@ platform:
     php: '>=5.6.40'
     ext-json: '*'
 platform-dev: []
-plugin-api-version: 2.0.0
+plugin-api-version: 2.1.0
