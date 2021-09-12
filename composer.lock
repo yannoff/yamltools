@@ -199,16 +199,16 @@
         },
         {
             "name": "yannoff/y-a-m-l",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yannoff/y-a-m-l.git",
-                "reference": "864be87d351797e270b63cbb755bc9f456afe407"
+                "reference": "78d0dd8e0f81056ba3ed04ac6b825c3464e8fcae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yannoff/y-a-m-l/zipball/864be87d351797e270b63cbb755bc9f456afe407",
-                "reference": "864be87d351797e270b63cbb755bc9f456afe407",
+                "url": "https://api.github.com/repos/yannoff/y-a-m-l/zipball/78d0dd8e0f81056ba3ed04ac6b825c3464e8fcae",
+                "reference": "78d0dd8e0f81056ba3ed04ac6b825c3464e8fcae",
                 "shasum": ""
             },
             "require": {
@@ -237,9 +237,9 @@
             "homepage": "https://github.com/yannoff/y-a-m-l",
             "support": {
                 "issues": "https://github.com/yannoff/y-a-m-l/issues",
-                "source": "https://github.com/yannoff/y-a-m-l/tree/1.1.4"
+                "source": "https://github.com/yannoff/y-a-m-l/tree/1.1.5"
             },
-            "time": "2021-01-20T22:00:30+00:00"
+            "time": "2021-09-12T13:59:09+00:00"
         }
     ],
     "packages-dev": [
