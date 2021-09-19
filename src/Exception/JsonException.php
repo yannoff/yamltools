@@ -32,6 +32,17 @@ class JsonException extends EncoderException
     }
 
     /**
+     * String representation of the exception
+     * Display the error message suffixed with the error constant name
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf('%s (%s)', $this->message,  $this->translate($this->code));
+    }
+
+    /**
      * Resolve the given JSON predefined error code to a human-readable message
      *
      * @param int $code One of the JSON_ERROR_* constants value
@@ -64,5 +75,32 @@ class JsonException extends EncoderException
             default:
                 return 'Unknown error';
         endswitch;
+    }
+
+    /**
+     * Resolve the given JSON predefined error code to the associated constant name
+     * If the code doesn't match any constant, the numeric value is returned
+     *
+     * @param int $code One of the JSON_ERROR_* constants value
+     *
+     * @return string
+     */
+    protected function translate($code)
+    {
+        $errors = array_flip(
+            array_filter(
+                get_defined_constants(),
+                function ($name){
+                    return preg_match('/^JSON_ERROR/', $name);
+                },
+                ARRAY_FILTER_USE_KEY
+            )
+        );
+
+        if (array_key_exists($code, $errors)) {
+            return $errors[$code];
+        }
+
+        return (string) $code;
     }
 }

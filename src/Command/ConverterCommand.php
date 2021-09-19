@@ -103,7 +103,7 @@ abstract class ConverterCommand extends BaseCommand
             $this->iowrite($out, null);
 
         } catch (\Exception $e) {
-            $error = sprintf('Error: %s (%s). Exiting.', $e->getMessage(), $e->getCode());
+            $error = sprintf('Error: %s. Exiting.', (string) $e);
             $this->errorln($error);
             return $e->getCode();
         }

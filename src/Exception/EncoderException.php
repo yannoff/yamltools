@@ -17,5 +17,11 @@ use RuntimeException;
  */
 class EncoderException extends RuntimeException
 {
-
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        return sprintf('%s (code: %s)', $this->message,  $this->code);
+    }
 }
