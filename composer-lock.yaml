@@ -185,15 +185,15 @@ packages:
 packages-dev:
     -
         name: squizlabs/php_codesniffer
-        version: 3.4.1
+        version: 3.6.1
         source:
             type: git
             url: 'https://github.com/squizlabs/PHP_CodeSniffer.git'
-            reference: 5b4333b4010625d29580eb4a41f1e53251be6baa
+            reference: f268ca40d54617c6e06757f83f699775c9b3ff2e
         dist:
             type: zip
-            url: 'https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/5b4333b4010625d29580eb4a41f1e53251be6baa'
-            reference: 5b4333b4010625d29580eb4a41f1e53251be6baa
+            url: 'https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/f268ca40d54617c6e06757f83f699775c9b3ff2e'
+            reference: f268ca40d54617c6e06757f83f699775c9b3ff2e
             shasum: ''
         require:
             ext-simplexml: '*'
@@ -225,7 +225,7 @@ packages-dev:
             issues: 'https://github.com/squizlabs/PHP_CodeSniffer/issues'
             source: 'https://github.com/squizlabs/PHP_CodeSniffer'
             wiki: 'https://github.com/squizlabs/PHP_CodeSniffer/wiki'
-        time: '2019-03-19T03:22:27+00:00'
+        time: '2021-10-11T04:00:11+00:00'
 aliases: []
 minimum-stability: stable
 stability-flags: []
