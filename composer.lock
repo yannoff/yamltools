@@ -158,16 +158,16 @@
         },
         {
             "name": "yannoff/console",
-            "version": "1.2.4",
+            "version": "1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yannoff/console.git",
-                "reference": "ab0898858fd20e8d3ae7e17a7b6198b599e2e3c1"
+                "reference": "685fdc6217b6f5e483d115e4c00646cce4c5bc02"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yannoff/console/zipball/ab0898858fd20e8d3ae7e17a7b6198b599e2e3c1",
-                "reference": "ab0898858fd20e8d3ae7e17a7b6198b599e2e3c1",
+                "url": "https://api.github.com/repos/yannoff/console/zipball/685fdc6217b6f5e483d115e4c00646cce4c5bc02",
+                "reference": "685fdc6217b6f5e483d115e4c00646cce4c5bc02",
                 "shasum": ""
             },
             "require-dev": {
@@ -193,9 +193,9 @@
             "homepage": "https://github.com/yannoff/console",
             "support": {
                 "issues": "https://github.com/yannoff/console/issues",
-                "source": "https://github.com/yannoff/console/tree/1.2.4"
+                "source": "https://github.com/yannoff/console/tree/1.2.5"
             },
-            "time": "2021-07-14T12:04:44+00:00"
+            "time": "2021-11-23T15:24:09+00:00"
         },
         {
             "name": "yannoff/y-a-m-l",
