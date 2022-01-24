@@ -1,6 +1,6 @@
 {
     "chmod": "0755",
-    "banner": "YAML Tools Project\n(c) 2019-2021 Yann Blacher (Yannoff) - MIT License\n@link https://github.com/yannoff/yamltools",
+    "banner": "YAML Tools Project\nCopyright (c) Yann Blacher (Yannoff) - MIT License\n@link https://github.com/yannoff/yamltools",
     "directories": [
         "src"
     ],
