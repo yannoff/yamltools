@@ -23,9 +23,6 @@
             "homepage": "https://github.com/yannoff"
         }
     ],
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^3.4"
-    },
     "bin": [
         "bin/yamltools"
     ]
