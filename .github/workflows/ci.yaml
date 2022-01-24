@@ -1,0 +1,57 @@
+# vim: ts=4 sw=4 sts=4 retab
+
+name: Run checks
+
+on:
+    - push
+
+env:
+    COMPOSER_ROOT_VERSION: 2.2.5
+
+jobs:
+    coding-standards:
+        name: Coding standards
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Install PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: latest
+                  coverage: none
+                  tools: phpcs
+
+            - name: Check coding standards (PHP_CodeSniffer)
+              run: phpcs ./src
+
+    smoke-test:
+        name: Smoke test
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                php-versions:
+                    - 5.6
+                    - 7.0
+                    - 7.1
+                    - 7.2
+                    - 7.3
+                    - 7.4
+                    - 8.0
+                    - 8.1
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Install PHP
+              uses: shivammathur/setup-php@v2
+              with:
+                  php-version: ${{ matrix.php-versions }}
+                  coverage: none
+
+            - name: Install dependencies (Composer)
+              uses: ramsey/composer-install@v1
+
+            - name: Run smoke test (invoke --version option)
+              run: bin/application.php --version
