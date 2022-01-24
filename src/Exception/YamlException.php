@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @project yamltools
  * @author  yannoff
@@ -14,5 +15,4 @@ namespace Yannoff\YamlTools\Exception;
  */
 class YamlException extends EncoderException
 {
-
 }

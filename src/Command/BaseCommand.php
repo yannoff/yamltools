@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @project yamltools
  * @author  yannoff
@@ -8,7 +9,6 @@
 namespace Yannoff\YamlTools\Command;
 
 use Yannoff\Component\Console\Command;
-
 
 /**
  * Class BaseCommand
