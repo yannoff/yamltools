@@ -19,22 +19,28 @@ use Yannoff\YamlTools\Exception\EncoderException;
 abstract class Encoder
 {
     /**
-     * @param string $contents
-     * @param array  $options
+     * Transform the given string to an object or array
      *
-     * @return mixed
+     * @param string $contents The formatted text to be decoded
+     * @param array  $options  Extra decoding options
+     * @param int    $flags    Optional bitwise combination of decoding flags
+     *
+     * @return mixed The decoded object/array representation
      * @throws EncoderException
      */
-    abstract public static function decode($contents, $options = []);
+    abstract public static function decode($contents, $options = [], $flags = 0);
 
     /**
-     * @param mixed $object
-     * @param array $options
+     * Transform the given object/array to its string representation
      *
-     * @return string
+     * @param mixed $object  The object/array to be encoded
+     * @param array $options Extra encoding options
+     * @param int   $flags   Optional bitwise combination of encoding flags
+     *
+     * @return string The string representation of the encoded object/array
      * @throws EncoderException
      */
-    abstract public static function encode($object, $options = []);
+    abstract public static function encode($object, $options = [], $flags = 0);
 
 
     /**

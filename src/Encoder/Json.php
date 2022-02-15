@@ -48,21 +48,20 @@ class Json extends Encoder
     /**
      * Decode the given JSON formatted data into an object
      *
-     * @param string $json    The input data
-     * @param array  $options An associative array of options for the decoding process:
-     *    - 'flags' : a bitwise combination of JSON_* constants (defaults to self::DEFAULT_DECODE_FLAGS)
+     * @param string $contents The input data
+     * @param array  $options  An associative array of options for the decoding process:
      *    - 'depth' : override the $depth argument passed to json_encode (defaults to self::DEFAULT_MAX_DEPTH)
+     * @param int    $flags    A bitwise combination of JSON_* constants (defaults to self::DEFAULT_DECODE_FLAGS)
      *
      * @return mixed
      * @throws JsonException
      */
-    public static function decode($json, $options = [])
+    public static function decode($contents, $options = [], $flags = self::DEFAULT_DECODE_FLAGS)
     {
         $depth = self::get($options, 'depth', self::DEFAULT_MAX_DEPTH);
-        $flags = self::get($options, 'flags', self::DEFAULT_DECODE_FLAGS);
 
         try {
-            $data = \json_decode($json, false, $depth, self::JSON_THROW_ON_ERROR | $flags);
+            $data = \json_decode($contents, false, $depth, self::JSON_THROW_ON_ERROR | $flags);
         } catch (\Exception $e) {
             throw new JsonException($e->getCode());
         }
@@ -78,16 +77,14 @@ class Json extends Encoder
      * Encode the given input object to a JSON formatted string
      *
      * @param mixed $object  The input object
-     * @param array $options An associative array of options for encoding process:
-     *    - 'flags' : a bitwise combination of JSON_* constants (defaults to self::DEFAULT_ENCODE_FLAGS)
+     * @param array $options An associative array of options for encoding process
+     * @param int   $flags   A bitwise combination of JSON_* constants (defaults to self::DEFAULT_ENCODE_FLAGS)
      *
      * @return string
      * @throws JsonException
      */
-    public static function encode($object, $options = [])
+    public static function encode($object, $options = [], $flags = self::DEFAULT_ENCODE_FLAGS)
     {
-        $flags = self::get($options, 'flags', self::DEFAULT_ENCODE_FLAGS);
-
         try {
             $json = \json_encode($object, self::JSON_THROW_ON_ERROR | $flags);
         } catch (\Exception $e) {
