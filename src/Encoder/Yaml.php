@@ -52,19 +52,17 @@ class Yaml extends Encoder
     /**
      * Decode the given YAML formatted input data into an object
      *
-     * @param string $yaml    The YAML formatted contents
-     * @param array  $options An associative array of options for the decoding process:
-     *    - 'flags' : a bitwise combination of Yaml::PARSE_* constants (defaults to self::DEFAULT_DECODE_FLAGS)
+     * @param string $contents The YAML formatted contents
+     * @param array  $options  An associative array of options for the decoding process
+     * @param int    $flags    A bitwise combination of Yaml::PARSE_* constants (defaults to self::DEFAULT_DECODE_FLAGS)
      *
      * @return mixed
      * @throws YamlException
      */
-    public static function decode($yaml, $options = [])
+    public static function decode($contents, $options = [], $flags = self::DEFAULT_DECODE_FLAGS)
     {
-        $flags = self::get($options, 'flags', self::DEFAULT_DECODE_FLAGS);
-
         try {
-            return BaseYaml::parse($yaml, $flags);
+            return BaseYaml::parse($contents, $flags);
         } catch (ParseException $e) {
             throw new YamlException($e->getMessage(), $e->getCode(), $e->getPrevious());
         }
@@ -75,18 +73,17 @@ class Yaml extends Encoder
      *
      * @param mixed $object  The input object
      * @param array $options An associative array of options for the encoding process:
-     *    - 'flags'  : a bitwise combination of Yaml::DUMP_* constants (defaults to self::DEFAULT_ENCODE_FLAGS)
      *    - 'inline' : override the $inline argument passed to Yaml::dump() (defaults to self::DEFAULT_INLINE)
      *    - 'indent' : override the $indent argument passed to Yaml::dump() (defaults to self::DEFAULT_INDENT)
+     *@param int   $flags   A bitwise combination of Yaml::DUMP_* constants (defaults to self::DEFAULT_ENCODE_FLAGS)
      *
      * @return string
      * @throws YamlException
      */
-    public static function encode($object, $options = [])
+    public static function encode($object, $options = [], $flags = self::DEFAULT_ENCODE_FLAGS)
     {
         $inline = self::get($options, 'inline', self::DEFAULT_EXPAND_MAX_LEVEL);
         $indent = self::get($options, 'indent', self::DEFAULT_INDENT);
-        $flags = self::get($options, 'flags', self::DEFAULT_ENCODE_FLAGS);
 
         try {
             return BaseYaml::dump($object, $inline, $indent, $flags);
