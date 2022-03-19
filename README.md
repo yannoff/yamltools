@@ -2,6 +2,12 @@
 
 The YAML Tools Project: A command-line swiss-knife for `YAML`, written in PHP.
 
+
+[![Latest Stable Version](https://poser.pugx.org/yannoff/yamltools/v/stable)](https://packagist.org/packages/yannoff/yamltools)
+[![Total Downloads](https://poser.pugx.org/yannoff/yamltools/downloads)](https://packagist.org/packages/yannoff/yamltools)
+[![License](https://poser.pugx.org/yannoff/yamltools/license)](https://packagist.org/packages/yannoff/yamltools)
+
+
 ## Requirements
 
 - `php` 5.6.40+
