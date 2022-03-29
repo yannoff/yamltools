@@ -28,7 +28,7 @@ abstract class Encoder
      * @return mixed The decoded object/array representation
      * @throws EncoderException
      */
-    abstract public static function decode($contents, $options = [], $flags = 0);
+    abstract public static function decode($contents, $options = [], $flags = null);
 
     /**
      * Transform the given object/array to its string representation
@@ -40,8 +40,21 @@ abstract class Encoder
      * @return string The string representation of the encoded object/array
      * @throws EncoderException
      */
-    abstract public static function encode($object, $options = [], $flags = 0);
+    abstract public static function encode($object, $options = [], $flags = null);
 
+    /**
+     * Return the default value for the decode() method $flag argument
+     *
+     * @return int A bitwise flags combination (zero if none)
+     */
+    abstract public static function getDefaultDecodeFlags();
+
+    /**
+     * Return the default value for the encode() method $flag argument
+     *
+     * @return int A bitwise flags combination (zero if none)
+     */
+    abstract public static function getDefaultEncodeFlags();
 
     /**
      * Extract the given queried option, falling back to the provided defaults

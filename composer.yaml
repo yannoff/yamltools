@@ -3,7 +3,7 @@ description: 'A command-line Swiss-Knife for YAML files'
 homepage: 'https://github.com/yannoff/yamltools'
 type: console-script
 require:
-    php: '>=5.6.40'
+    php: '>=5.5'
     ext-json: '*'
     symfony/yaml: ^3.4
     yannoff/y-a-m-l: ^1.1
