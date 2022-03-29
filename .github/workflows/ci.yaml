@@ -27,7 +27,7 @@ jobs:
               run: phpcs ./src
 
     smoke-test:
-        name: Smoke test
+        name: Test converting command
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -53,5 +53,5 @@ jobs:
             - name: Install dependencies (Composer)
               uses: ramsey/composer-install@v1
 
-            - name: Run smoke test (invoke --version option)
-              run: bin/application.php --version
+            - name: Run test (convert composer.json to yaml)
+              run: bin/application.php convert:json:yaml composer.json
