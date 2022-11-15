@@ -46,8 +46,8 @@ rm ${BINDIR}/app.php
 # - generate MD5 & SHA384 signature files
 cd $BINDIR
 mv -v yamltools.phar yamltools
-md5sum yamltools | awk '{ print $1; }' > yamltools.md5
-sha384sum yamltools | awk '{ print $1; }' > yamltools.sha384
+php -r "echo hash('md5', file_get_contents('yamltools'));" > yamltools.md5
+php -r "echo hash('sha384', file_get_contents('yamltools'));" > yamltools.sha384
 cd -
 
 # Restore dev dependencies into the project
