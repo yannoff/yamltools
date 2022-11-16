@@ -6,6 +6,11 @@
  * @created 2019-02-01 19:51
  */
 
+error_reporting(E_ERROR);
+
+// Redirect error messages to standard error output
+ini_set('display_errors', 'stderr');
+
 require __DIR__ . '/../vendor/autoload.php';
 
 use Yannoff\Component\Console\Application;
