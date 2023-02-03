@@ -8,8 +8,6 @@
 
 namespace Yannoff\YamlTools\Exception;
 
-use RuntimeException;
-
 /**
  * Class EncoderException
  * Base exception for Encoder classes
@@ -18,11 +16,4 @@ use RuntimeException;
  */
 class EncoderException extends RuntimeException
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        return \sprintf('%s (code: %s)', $this->message,  $this->code);
-    }
 }

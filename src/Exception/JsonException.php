@@ -38,9 +38,9 @@ class JsonException extends EncoderException
      *
      * @return string
      */
-    public function __toString()
+    public function stringify()
     {
-        return \sprintf('%s (%s)', $this->message,  $this->translate($this->code));
+        return \sprintf('%s (%s).', $this->message,  $this->translate($this->code));
     }
 
     /**

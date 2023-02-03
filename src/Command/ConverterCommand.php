@@ -10,6 +10,7 @@ namespace Yannoff\YamlTools\Command;
 
 use StdClass;
 use Yannoff\Component\Console\Definition\Argument;
+use Yannoff\YamlTools\Exception\RuntimeWarning;
 
 /**
  * Class ConverterCommand
@@ -90,22 +91,19 @@ abstract class ConverterCommand extends BaseCommand
 
             // In case the dump() result is 'null', don't write to file
             if ('null' == \trim($out)) {
-                echo '(null)';
-                $this->debug("No content generated, so file $outfile wasn't written.");
-                return 0;
+                throw new RuntimeWarning('No contents generated');
             }
 
             if ($outfile) {
                 \file_put_contents($outfile, $out);
-                $this->errorln("Written file $outfile.");
+                $this->debug("Written file $outfile.");
                 return 0;
             }
 
             $this->iowrite($out, null);
 
         } catch (\Exception $e) {
-            $error = \sprintf('Error: %s. Exiting.', (string) $e);
-            $this->errorln($error);
+            $this->debug($e);
             return $e->getCode();
         }
 
