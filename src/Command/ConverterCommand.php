@@ -63,8 +63,8 @@ abstract class ConverterCommand extends BaseCommand
             ->setDescription($helpText)
             ->addArgument(
                 'infile',
-                Argument::REQUIRED,
-                \sprintf('Input file (%s). If `-` provided, use standard input', $inputFormat)
+                Argument::OPTIONAL,
+                \sprintf('Input file (%s). If none provided (or `-` is used), use standard input', $inputFormat)
             )
             ->addArgument(
                 'outfile',
