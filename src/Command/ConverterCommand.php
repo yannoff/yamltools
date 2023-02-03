@@ -43,7 +43,7 @@ abstract class ConverterCommand extends BaseCommand
         $this->in  = $in;
         $this->out = $out;
 
-        $name = sprintf('%s:%s:%s', $ns, $in, $out);
+        $name = \sprintf('%s:%s:%s', $ns, $in, $out);
 
         parent::__construct($name);
     }
@@ -53,9 +53,9 @@ abstract class ConverterCommand extends BaseCommand
      */
     public function configure()
     {
-        $inputFormat  = strtoupper($this->in);
-        $outputFormat = strtoupper($this->out);
-        $helpText     = sprintf('Convert a %s file to %s format', $inputFormat, $outputFormat);
+        $inputFormat  = \strtoupper($this->in);
+        $outputFormat = \strtoupper($this->out);
+        $helpText     = \sprintf('Convert a %s file to %s format', $inputFormat, $outputFormat);
 
         $this
             ->setHelp($helpText)
@@ -63,12 +63,12 @@ abstract class ConverterCommand extends BaseCommand
             ->addArgument(
                 'infile',
                 Argument::REQUIRED,
-                sprintf('Input file (%s). If `-` provided, use standard input', $inputFormat)
+                \sprintf('Input file (%s). If `-` provided, use standard input', $inputFormat)
             )
             ->addArgument(
                 'outfile',
                 Argument::OPTIONAL,
-                sprintf('Output file (%s). If none provided, use standard output', $outputFormat)
+                \sprintf('Output file (%s). If none provided, use standard output', $outputFormat)
             );
     }
 
@@ -89,14 +89,14 @@ abstract class ConverterCommand extends BaseCommand
             $out = $this->doDump($data);
 
             // In case the dump() result is 'null', don't write to file
-            if ('null' == trim($out)) {
+            if ('null' == \trim($out)) {
                 echo '(null)';
                 $this->debug("No content generated, so file $outfile wasn't written.");
                 return 0;
             }
 
             if ($outfile) {
-                file_put_contents($outfile, $out);
+                \file_put_contents($outfile, $out);
                 $this->errorln("Written file $outfile.");
                 return 0;
             }
@@ -104,7 +104,7 @@ abstract class ConverterCommand extends BaseCommand
             $this->iowrite($out, null);
 
         } catch (\Exception $e) {
-            $error = sprintf('Error: %s. Exiting.', (string) $e);
+            $error = \sprintf('Error: %s. Exiting.', (string) $e);
             $this->errorln($error);
             return $e->getCode();
         }
@@ -134,7 +134,7 @@ abstract class ConverterCommand extends BaseCommand
      */
     protected function doDump($object)
     {
-        return rtrim($this->dump($object), self::LF) . self::LF;
+        return \rtrim($this->dump($object), self::LF) . self::LF;
     }
 
     /**

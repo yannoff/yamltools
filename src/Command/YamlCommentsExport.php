@@ -70,7 +70,7 @@ class YamlCommentsExport extends CommentsCommand
                 return 0;
             }
 
-            file_put_contents($outfile, $yaml);
+            \file_put_contents($outfile, $yaml);
 
         } catch (\Exception $e) {
 

@@ -40,7 +40,7 @@ class JsonException extends EncoderException
      */
     public function __toString()
     {
-        return sprintf('%s (%s)', $this->message,  $this->translate($this->code));
+        return \sprintf('%s (%s)', $this->message,  $this->translate($this->code));
     }
 
     /**
@@ -88,20 +88,14 @@ class JsonException extends EncoderException
      */
     protected function translate($code)
     {
-        $errors = array_flip(
-            array_filter(
-                get_defined_constants(),
-                function ($name){
-                    return preg_match('/^JSON_ERROR/', $name);
-                },
-                ARRAY_FILTER_USE_KEY
-            )
-        );
+        $errors = [];
 
-        if (array_key_exists($code, $errors)) {
-            return $errors[$code];
+        foreach (\get_defined_constants(true)['json'] as $name => $value) {
+            if (\preg_match('/^JSON_ERROR/', $name)) {
+                $errors[$value] = $name;
+            }
         }
 
-        return (string) $code;
+         return \array_key_exists($code, $errors) ? $errors[$code] : (string) $code;
     }
 }
