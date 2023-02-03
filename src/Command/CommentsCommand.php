@@ -25,7 +25,7 @@ abstract class CommentsCommand extends BaseCommand
     public function _debugAnalyzer(Contents $analyzer)
     {
         foreach ($analyzer->getRows() as $n => $row) {
-            printf("%-2s: %s\n", $n, $row);
+            \printf("%-2s: %s\n", $n, $row);
         }
     }
 }

@@ -26,7 +26,7 @@ abstract class BaseCommand extends Command
      */
     protected function debug($message)
     {
-        $message = sprintf("%s: %s", $this->application->getName(), $message);
+        $message = \sprintf("%s: %s", $this->application->getName(), $message);
         $this->errorln($message);
     }
 
@@ -43,6 +43,6 @@ abstract class BaseCommand extends Command
             return $this->ioread();
         }
 
-        return file_get_contents($filename);
+        return \file_get_contents($filename);
     }
 }

@@ -23,6 +23,6 @@ class EncoderException extends RuntimeException
      */
     public function __toString()
     {
-        return sprintf('%s (code: %s)', $this->message,  $this->code);
+        return \sprintf('%s (code: %s)', $this->message,  $this->code);
     }
 }

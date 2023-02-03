@@ -75,7 +75,7 @@ class YamlCommentsImport extends CommentsCommand
                 return 0;
             }
 
-            file_put_contents($outfile, $outStream);
+            \file_put_contents($outfile, $outStream);
 
         } catch (\Exception $e) {
 

@@ -67,7 +67,7 @@ abstract class Encoder
      */
     protected static function get($options, $name, $default = null)
     {
-        if (array_key_exists($name, $options)) {
+        if (\array_key_exists($name, $options)) {
             return $options[$name];
         }
 
