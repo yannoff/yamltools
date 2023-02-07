@@ -53,7 +53,7 @@ jobs:
                   coverage: none
 
             - name: Install dependencies (Composer)
-              uses: ramsey/composer-install@v1
+              uses: ramsey/composer-install@v2
 
             - name: Run test (convert composer.json to yaml)
               run: bin/application.php convert:json:yaml composer.json
