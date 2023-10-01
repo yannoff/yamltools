@@ -66,7 +66,7 @@ class YamlCommentsExport extends CommentsCommand
             $yaml = Yaml::dump($comments, 6, 4, Yaml::DUMP_OBJECT | Yaml::DUMP_MULTI_LINE_LITERAL_BLOCK);
 
             if (null == $outfile || '-' === $outfile) {
-                $this->iowrite($yaml, null);
+                $this->write($yaml, null);
                 return 0;
             }
 
@@ -74,7 +74,7 @@ class YamlCommentsExport extends CommentsCommand
 
         } catch (\Exception $e) {
 
-            $this->errorln($e->getMessage());
+            $this->error($e->getMessage());
             return 1;
 
         }

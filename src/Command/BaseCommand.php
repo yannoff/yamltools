@@ -27,7 +27,7 @@ abstract class BaseCommand extends Command
     protected function debug($message)
     {
         $message = \sprintf("[%s] %s", $this->application->getName(), $message);
-        $this->errorln($message);
+        $this->error($message);
     }
 
     /**

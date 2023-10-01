@@ -71,7 +71,7 @@ class YamlCommentsImport extends CommentsCommand
             $outStream = (new Contents($outfile))->injectComments($comments);
 
             if (null == $this->getOption('write')) {
-                $this->iowrite((string) $outStream, null);
+                $this->write((string) $outStream, null);
                 return 0;
             }
 
@@ -79,7 +79,7 @@ class YamlCommentsImport extends CommentsCommand
 
         } catch (\Exception $e) {
 
-            $this->errorln($e->getMessage());
+            $this->error($e->getMessage());
             return 1;
 
         }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "204d5913e2dd19a0cbb716f29478bdc4",
+    "content-hash": "fa98370078ac4883f27ad14f564abccf",
     "packages": [
         {
             "name": "symfony/polyfill-ctype",
@@ -158,16 +158,16 @@
         },
         {
             "name": "yannoff/console",
-            "version": "1.4.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yannoff/console.git",
-                "reference": "236bad882f2ea671065f830e768528409c8b57fd"
+                "reference": "8023f5ce918efe43f10edf521dffdfe6dd974b92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yannoff/console/zipball/236bad882f2ea671065f830e768528409c8b57fd",
-                "reference": "236bad882f2ea671065f830e768528409c8b57fd",
+                "url": "https://api.github.com/repos/yannoff/console/zipball/8023f5ce918efe43f10edf521dffdfe6dd974b92",
+                "reference": "8023f5ce918efe43f10edf521dffdfe6dd974b92",
                 "shasum": ""
             },
             "type": "library",
@@ -190,9 +190,9 @@
             "homepage": "https://github.com/yannoff/console",
             "support": {
                 "issues": "https://github.com/yannoff/console/issues",
-                "source": "https://github.com/yannoff/console/tree/1.4.0"
+                "source": "https://github.com/yannoff/console/tree/2.0.0"
             },
-            "time": "2023-02-07T13:22:10+00:00"
+            "time": "2023-10-01T09:45:44+00:00"
         },
         {
             "name": "yannoff/y-a-m-l",

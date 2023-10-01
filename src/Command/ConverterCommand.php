@@ -100,7 +100,7 @@ abstract class ConverterCommand extends BaseCommand
                 return 0;
             }
 
-            $this->iowrite($out, null);
+            $this->write($out, null);
 
         } catch (\Exception $e) {
             $this->debug($e);
