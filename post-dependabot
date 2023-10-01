@@ -4,11 +4,11 @@
 # Update composer-lock.yaml file upon the composer.lock
 #
 
-yamlbin=yamltools
+yamlbin=bin/application.php
 jsonfile=composer.lock
 yamlfile=composer-lock.yaml
 
-backup=$(mktemp)
+backup=lock.orig
 
 echo "Creating a copy of the original ${yamlfile}..."
 cp ${yamlfile} ${backup}
