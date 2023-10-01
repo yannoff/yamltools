@@ -33,7 +33,9 @@ offenbach install --no-dev
 offenbach dump-autoload --optimize
 
 # Create temporary distributable application file
-sed "s/@@version@@/${version}/" ${BINDIR}/application.php > ${BINDIR}/app.php
+cp ${BINDIR}/application.php ${BINDIR}/app.php
+sed -i "s/@@version@@/${version}/" ${BINDIR}/app.php
+sed -i "s/E_ALL/E_ERROR/" ${BINDIR}/app.php
 
 # Launch box build command
 php -d phar.readonly=0 $BOXBIN build "$@"

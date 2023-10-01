@@ -6,7 +6,7 @@
  * @created 2019-02-01 19:51
  */
 
-error_reporting(E_ERROR);
+error_reporting(E_ALL);
 
 // Redirect error messages to standard error output
 ini_set('display_errors', 'stderr');
