@@ -76,7 +76,7 @@ class YamlCommentsMerge extends CommentsCommand
             $outStream = (string) $outContents;
 
             if (null == $this->getOption('write')) {
-                $this->iowrite($outStream, null);
+                $this->write($outStream, null);
                 return 0;
             }
 
@@ -84,7 +84,7 @@ class YamlCommentsMerge extends CommentsCommand
 
         } catch (\Exception $e) {
 
-            $this->errorln($e->getMessage());
+            $this->error($e->getMessage());
             return 1;
 
         }
