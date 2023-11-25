@@ -120,16 +120,18 @@ packages:
         time: '2020-10-24T10:57:07+00:00'
     -
         name: yannoff/console
-        version: 2.0.0
+        version: 2.2.2
         source:
             type: git
             url: 'https://github.com/yannoff/console.git'
-            reference: 8023f5ce918efe43f10edf521dffdfe6dd974b92
+            reference: ac45b6a94cf5de7aeea63a1aa0bbb3eb1c4f4404
         dist:
             type: zip
-            url: 'https://api.github.com/repos/yannoff/console/zipball/8023f5ce918efe43f10edf521dffdfe6dd974b92'
-            reference: 8023f5ce918efe43f10edf521dffdfe6dd974b92
+            url: 'https://api.github.com/repos/yannoff/console/zipball/ac45b6a94cf5de7aeea63a1aa0bbb3eb1c4f4404'
+            reference: ac45b6a94cf5de7aeea63a1aa0bbb3eb1c4f4404
             shasum: ''
+        require:
+            php: '>=5.5'
         type: library
         autoload:
             psr-4:
@@ -145,8 +147,8 @@ packages:
         homepage: 'https://github.com/yannoff/console'
         support:
             issues: 'https://github.com/yannoff/console/issues'
-            source: 'https://github.com/yannoff/console/tree/2.0.0'
-        time: '2023-10-01T09:45:44+00:00'
+            source: 'https://github.com/yannoff/console/tree/2.2.2'
+        time: '2023-10-30T15:31:09+00:00'
     -
         name: yannoff/y-a-m-l
         version: 1.1.5
