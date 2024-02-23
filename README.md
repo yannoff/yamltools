@@ -73,5 +73,3 @@ The major drawback on the other hand is that the component is [not fully complia
 ## Credits
 
 Licensed under the [MIT License](LICENSE).
-
-Compiled as a PHAR self-executable using [Box](https://github.com/box-project/box2).
