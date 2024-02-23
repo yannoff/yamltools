@@ -14,10 +14,10 @@ echo "Creating a copy of the original ${yamlfile}..."
 cp ${yamlfile} ${backup}
 
 echo "Updating ${yamlfile} to match ${jsonfile} contents..."
-${yamlbin} convert:json:yaml ${jsonfile} ${yamlfile}
+php ${yamlbin} convert:json:yaml ${jsonfile} ${yamlfile}
 
 echo "Re-integrating original comments to the ${yamlfile}..."
-${yamlbin} yaml:comments:merge -w ${backup} ${yamlfile}
+php ${yamlbin} yaml:comments:merge -w ${backup} ${yamlfile}
 
 echo "Removing ${yamlfile} copy..."
 rm -i ${backup}
