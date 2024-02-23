@@ -56,4 +56,4 @@ jobs:
               uses: ramsey/composer-install@v2
 
             - name: Run test (convert composer.json to yaml)
-              run: bin/application.php convert:json:yaml composer.json
+              run: php bin/application.php convert:json:yaml composer.json

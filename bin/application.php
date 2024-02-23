@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 /**
  * @project yamltools
@@ -11,7 +10,7 @@ error_reporting(E_ALL);
 // Redirect error messages to standard error output
 ini_set('display_errors', 'stderr');
 
-require __DIR__ . '/../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 use Yannoff\Component\Console\Application;
 use Yannoff\YamlTools\Command\Json2Yaml;

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BOXBIN=`dirname $0`/box
+BOXBIN=`dirname $0`/box.php
 BINDIR=bin/
 
 oldversion=`${BINDIR}/yamltools --version --raw`
@@ -38,7 +38,8 @@ sed -i "s/@@version@@/${version}/" ${BINDIR}/app.php
 sed -i "s/E_ALL/E_ERROR/" ${BINDIR}/app.php
 
 # Launch box build command
-php -d phar.readonly=0 $BOXBIN build "$@"
+php -d phar.readonly=0 $BOXBIN ${version}
+#phpcc -d src -d vendor -e bin/app.php -o bin/yamltools.phar
 
 # Remove temporary distributable application file
 rm ${BINDIR}/app.php
